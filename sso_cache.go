@@ -29,7 +29,7 @@ type Token struct {
 	ExpiresAt   time.Time
 }
 
-func (ssoCache *SSOCache) getCaches() ([]Token, error) {
+func (ssoCache *SSOCache) getTokens() ([]Token, error) {
 	pat := filepath.Join(ssoCache.AWSSSOCacheDir, "*.json")
 	files, err := filepath.Glob(pat)
 
@@ -63,8 +63,8 @@ func (ssoCache *SSOCache) getCaches() ([]Token, error) {
 	return caches, nil
 }
 
-func (ssoTokenCache *SSOCache) LastToken() (*Token, error) {
-	caches, err := ssoTokenCache.getCaches()
+func (ssoCache *SSOCache) LastToken() (*Token, error) {
+	caches, err := ssoCache.getTokens()
 
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (ssoTokenCache *SSOCache) LastToken() (*Token, error) {
 	maxExpiresAt := time.Now()
 
 	for _, token := range caches {
-		if token.StartUrl != ssoTokenCache.SSOStartUrl {
+		if token.StartUrl != ssoCache.SSOStartUrl {
 			continue
 		}
 

@@ -39,8 +39,8 @@ func (ssoClient *SSO) GetCredentials(ctx context.Context) (*Credentials, error) 
 		return nil, err
 	}
 
-	ssoTokenCache := NewSSOTokenCache(ssoClient.Options, ssoStartUrl)
-	token, err := ssoTokenCache.LastToken()
+	ssoCache := NewSSOCache(ssoClient.Options, ssoStartUrl)
+	token, err := ssoCache.LastToken()
 
 	if err != nil {
 		return nil, err

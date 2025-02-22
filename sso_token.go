@@ -88,7 +88,7 @@ func (ssoTokenCache *SSOTokenCache) LastToken() (*Token, error) {
 	}
 
 	if lastToken == nil {
-		return nil, fmt.Errorf("access token not found, try `aws sso login`")
+		return nil, fmt.Errorf("SSO token not found, try `aws sso login`")
 	}
 
 	return lastToken, nil

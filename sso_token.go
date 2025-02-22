@@ -50,8 +50,7 @@ func (ssoTokenCache *SSOTokenCache) getCaches() ([]Token, error) {
 		err = json.Unmarshal(raw, &token)
 
 		if err != nil {
-			// Must not happen
-			return nil, fmt.Errorf("fatal: %w", err)
+			panic(err)
 		}
 
 		if token.StartUrl == "" || token.AccessToken == "" || token.Region == "" || token.ExpiresAt.IsZero() {

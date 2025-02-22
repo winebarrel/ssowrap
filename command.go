@@ -2,7 +2,6 @@ package ssowrap
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"os/exec"
 	"strings"
@@ -26,8 +25,7 @@ func (command Command) Run(ctx context.Context, creds *Credentials) error {
 	credsEnv, err := creds.EnvSet()
 
 	if err != nil {
-		// Must not happen
-		return fmt.Errorf("fatal: %w", err)
+		panic(err)
 	}
 
 	for name, value := range credsEnv {

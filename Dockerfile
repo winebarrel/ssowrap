@@ -6,7 +6,7 @@ RUN go mod download
 COPY Makefile *.go /src/
 COPY cmd /src/cmd
 ARG VERSION
-RUN make BUILD_OPTS="-ldflags '-X main.version=$VERSION'"
+RUN make
 
 FROM debian:bookworm-slim
 

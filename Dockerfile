@@ -1,6 +1,10 @@
 FROM golang:1.24 AS build
+
 WORKDIR /src
-COPY ./ /src/
+COPY go.mod go.sum /src/
+RUN go mod download
+COPY Makefile *.go /src/
+COPY cmd /src/cmd
 ARG VERSION
 RUN make BUILD_OPTS="-ldflags '-X main.version=$VERSION'"
 

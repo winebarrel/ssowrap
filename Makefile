@@ -12,3 +12,7 @@ vet:
 .PHONY: lint
 lint:
 	golangci-lint run
+
+.PHONY: image
+image:
+	docker build -t ssowrap .

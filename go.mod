@@ -1,6 +1,6 @@
 module github.com/winebarrel/ssowrap
 
-go 1.23.4
+go 1.24.0
 
 require (
 	github.com/Netflix/go-env v0.1.2

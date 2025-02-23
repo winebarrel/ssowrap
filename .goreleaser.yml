@@ -1,0 +1,34 @@
+version: 2
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - main: ./cmd/ssowrap
+    ldflags:
+      - -X main.version={{.Version}}
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+checksum:
+  name_template: "checksums.txt"
+brews:
+  - repository:
+      owner: winebarrel
+      name: ssowrap
+    homepage: https://github.com/winebarrel/ssowrap
+    description: ssowrap is a single binary tool that run a command using AWS SSO credentials.
+    license: MIT
+    install: |
+      bin.install 'ssowrap'
+nfpms:
+  - file_name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Arch }}"
+    homepage: https://github.com/winebarrel/ssowrap
+    description: ssowrap is a single binary tool that run a command using AWS SSO credentials.
+    license: MIT
+    maintainer: "Genki Sugawara <sugawara@winebarrel.jp>"
+    formats:
+      - deb
+      - rpm
+    bindir: /usr/bin

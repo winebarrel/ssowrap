@@ -10,16 +10,15 @@ RUN make BUILD_OPTS="-ldflags '-X main.version=$VERSION'"
 
 FROM debian:bookworm-slim
 
-RUN <<EOF
+RUN --mount=type=cache,target=/var/apt/cache <<EOF
 set -e
+rm /etc/apt/apt.conf.d/docker-clean
 apt-get update
 apt-get install -y --no-install-recommends \
   ca-certificates \
   curl \
   openssh-client \
   awscli
-apt-get -y clean
-rm -rf /var/lib/apt/lists/*
 
 # https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-debian-and-ubuntu.html
 case $(uname -m) in

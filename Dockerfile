@@ -11,7 +11,8 @@ set -e
 apt-get update
 apt-get install -y --no-install-recommends \
   ca-certificates \
-  openssh-client
+  openssh-client \
+  awscli
 apt-get -y clean
 rm -rf /var/lib/apt/lists/*
 EOF

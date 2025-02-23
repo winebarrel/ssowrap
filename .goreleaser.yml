@@ -17,6 +17,7 @@ brews:
   - repository:
       owner: winebarrel
       name: ssowrap
+      token: "{{ .Env.GITHUB_PERSONAL_AUTH_TOKEN }}"
     homepage: https://github.com/winebarrel/ssowrap
     description: ssowrap is a single binary tool that run a command using AWS SSO credentials.
     license: MIT

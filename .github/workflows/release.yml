@@ -20,6 +20,7 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PERSONAL_AUTH_TOKEN: ${{ secrets. GORELEASER_GITHUB_TOKEN }}
   docker:
     uses: ./.github/workflows/docker-build.yml
     permissions:

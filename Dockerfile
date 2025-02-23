@@ -13,8 +13,8 @@ FROM debian:bookworm-slim
 RUN --mount=type=cache,target=/var/apt/cache <<EOF
 set -e
 rm /etc/apt/apt.conf.d/docker-clean
-apt-get update
-apt-get install -y --no-install-recommends \
+apt-get update -qq
+apt-get install -qq -y --no-install-recommends \
   ca-certificates \
   curl \
   openssh-client \

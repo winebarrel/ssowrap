@@ -53,10 +53,14 @@ func (ssoClient *SSO) GetCredentials(ctx context.Context) (*Credentials, error) 
 		return nil, err
 	}
 
-	roleCreds, err := ssoClient.c.GetRoleCredentials(context.Background(), &sso.GetRoleCredentialsInput{
+	input := &sso.GetRoleCredentialsInput{
 		AccountId:   aws.String(role.Account),
 		RoleName:    aws.String(role.Name),
 		AccessToken: aws.String(token.AccessToken),
+	}
+
+	roleCreds, err := ssoClient.c.GetRoleCredentials(ctx, input, func(o *sso.Options) {
+		o.Region = token.Region
 	})
 
 	if err != nil {

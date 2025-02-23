@@ -3,7 +3,7 @@ all: vet build
 
 .PHONY: build
 build:
-	go build ./cmd/ssowrap
+	CGO_ENABLED=0 go build $(BUILD_OPTS) ./cmd/ssowrap
 
 .PHONY: vet
 vet:

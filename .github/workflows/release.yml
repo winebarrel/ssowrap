@@ -27,4 +27,4 @@ jobs:
       packages: write
     with:
       push: true
-      version: ${{ github.ref_name }}.
+      version: ${{ github.ref_name }}

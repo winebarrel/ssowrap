@@ -4,6 +4,9 @@
 
 ssowrap is a single binary tool that run a command using AWS SSO credentials.
 
+> [!note]
+> In most cases it is better to use [aws configure export-credentials](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/configure/export-credentials.html).
+
 ## Installation
 
 ```sh

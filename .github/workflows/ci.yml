@@ -47,7 +47,7 @@ jobs:
       - id: meta
         uses: docker/metadata-action@v5
         with:
-          images: winebarrel/ssowrap
+          images: ghcr.io/winebarrel/ssowrap
       - uses: docker/build-push-action@v6
         with:
           platforms: ${{ matrix.platform }}

@@ -10,8 +10,8 @@ RUN <<EOF
 set -e
 apt-get update
 apt-get install -y --no-install-recommends \
-  openssh-client \
-  awscli
+  ca-certificates \
+  openssh-client
 apt-get -y clean
 rm -rf /var/lib/apt/lists/*
 EOF

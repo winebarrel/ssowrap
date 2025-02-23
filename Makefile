@@ -3,7 +3,7 @@ all: vet build
 
 .PHONY: build
 build:
-	CGO_ENABLED=0 go build $(BUILD_OPTS) ./cmd/ssowrap
+	CGO_ENABLED=0 go build -ldflags '-X main.version=$(VERSION)' ./cmd/ssowrap
 
 .PHONY: vet
 vet:

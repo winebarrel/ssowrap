@@ -27,9 +27,17 @@ Flags:
 ```
 
 ```sh
-export AWS_PROFILE=my-profile
-aws sso login
-ssowrap env | grep ^AWS_
+$ export AWS_PROFILE=my-profile
+$ aws sso login
+$ ssowrap env | grep ^AWS_
+
+$ cat ./list-users.sh
+#!/bin/sh
+curl -L "https://iam.amazonaws.com/?Action=ListUsers&Version=2010-05-08" \
+  --aws-sigv4 "aws:amz:us-east-1:iam" \
+  --user "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" \
+  -H "X-Amz-Security-Token: $AWS_SESSION_TOKEN"
+
 # Call AWS IAM API using curl with AWS SSO credentials.
-ssowrap -- sh -c 'curl -L "https://iam.amazonaws.com/?Action=ListUsers&Version=2010-05-08" --aws-sigv4 "aws:amz:us-east-1:iam" --user "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" -H "X-Amz-Security-Token: $AWS_SESSION_TOKEN"'
+$ ssowrap ./list-users.sh
 ```

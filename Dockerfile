@@ -32,7 +32,7 @@ aarch64)
 esac
 
 if [ -n "$SESSION_MANAGER_PLUGIN_ARCH" ]; then
-  curl -O https://s3.amazonaws.com/session-manager-downloads/plugin/latest/$SESSION_MANAGER_PLUGIN_ARCH/session-manager-plugin.deb
+  curl -sSfO https://s3.amazonaws.com/session-manager-downloads/plugin/latest/$SESSION_MANAGER_PLUGIN_ARCH/session-manager-plugin.deb
   dpkg -i session-manager-plugin.deb
   rm session-manager-plugin.deb
 fi
